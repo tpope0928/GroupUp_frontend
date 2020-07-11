@@ -6,6 +6,31 @@
 </head>
 <body>
 
+    <div class="form-container">
+
+        <form id="create-game-form" style="">
+            <h3>Add a Game</h3>
+
+            <input id='input-title' type="text" name="title" value="" placeholder="Game" class="input-text">
+            <br><br>
+
+            <input id='input-genre' name="genre" rows="8" cols="80" value="" placeholder="Game genre">
+            <br><br>
+
+            <label for="input-level"> Skill Level</label><br>
+            <input id='input-level' type="range" name="level" min="0" max="5" placeholder="Skill level">
+
+            <br><br>
+            <label for="input-competitive"> Play competitive? </label><br>
+            <input id='input-competitive' type="checkbox" name="competitive" value="competitive" placeholder="Competitive">
+            <br><br>
+
+
+            <input id= 'create-button' type="submit" name="submit" value="Look for Players" class="submit">
+        </form>
+
+    </div>
+
     <div id="game-container">
     </div>
 

@@ -17,6 +17,7 @@ function getGames() {
                         <h3>${game.attributes.user.username} - ${game.attributes.user.city}, ${game.attributes.user.state}</h3>
                         <p>Game: ${game.attributes.title}</p>
                         <p>Genre: ${game.attributes.genre}</p>
+                        <p>Game Level: ${game.attributes.level}</p>
                         <p>Competitive: ${game.attributes.competitive}</p>
                         <button data-id=${game.id}>Group Up!</button>
                     </div>
