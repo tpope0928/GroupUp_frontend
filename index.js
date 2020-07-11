@@ -1,10 +1,26 @@
-const endpoint = "http://localhost:3000/api/v1/games"
+const endPoint = "http://localhost:3000/api/v1/games"
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch(endpoint)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-        })
+    getGames()
 })
+
+
+function getGames() {
+    fetch(endPoint)
+        .then(res => res.json())
+        .then(games => {
+            // remember our JSON data is a bit nested due to our serializer
+            games.data.forEach(game => {
+                // double check how your data is nested in the console so you can successfully access the attributes of each individual object
+                const gameMarkup = `
+                    <div data-id=${game.id}>
+                        <h3>${game.attributes.title}</h3>
+                        <p>${game.attributes.user.username}</p>
+                    </div>
+                    <br><br>`;
+
+                document.querySelector('#game-container').innerHTML += gameMarkup
+            })
+        })
+}
 
