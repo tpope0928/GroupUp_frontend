@@ -15,7 +15,9 @@ function getGames() {
                 const gameMarkup = `
                     <div data-id=${game.id}>
                         <h3>${game.attributes.user.username}</h3>
-                        <p>${game.attributes.title}</p>
+                        <p>Game: ${game.attributes.title}</p>
+                        <p>Genre: ${game.attributes.genre}</p>
+                        <p>Competitive: ${game.attributes.competitive}</p>
                         <button data-id=${game.id}>Group Up!</button>
                     </div>
                     <br><br>`;
