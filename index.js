@@ -14,7 +14,7 @@ function getGames() {
                 // double check how your data is nested in the console so you can successfully access the attributes of each individual object
                 const gameMarkup = `
                     <div data-id=${game.id}>
-                        <h3>${game.attributes.user.username}</h3>
+                        <h3>${game.attributes.user.username} - ${game.attributes.user.city}, ${game.attributes.user.state}</h3>
                         <p>Game: ${game.attributes.title}</p>
                         <p>Genre: ${game.attributes.genre}</p>
                         <p>Competitive: ${game.attributes.competitive}</p>
