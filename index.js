@@ -2,6 +2,10 @@ const endPoint = "http://localhost:3000/api/v1/games"
 
 document.addEventListener('DOMContentLoaded', () => {
     getGames()
+
+    const createGameForm = document.querySelector("#create-game-form")
+    createGameForm.addEventListener("submit", (e) => createFormHandler(e))
+
 })
 
 
@@ -26,5 +30,13 @@ function getGames() {
                 document.querySelector('#game-container').innerHTML += gameMarkup
             })
         })
+}
+
+function createFormHandler(e) {
+    e.preventDefault()
+    const titleInput =  document.querySelector("#input-title").value
+    const genreInput = document.querySelector("#input-genre").value
+    const levelInput = document.querySelector("#input-level").value
+    const compInput = document.querySelector("#input-competitive").value
 }
 
