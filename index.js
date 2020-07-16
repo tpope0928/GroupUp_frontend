@@ -41,6 +41,12 @@ function createFormHandler(e) {
     const genreInput = document.querySelector("#input-genre").value
     const levelInput = document.querySelector("#input-level").value
     const compInput = document.querySelector("#input-competitive").value
-    const userInput = document.querySelector("#input-username").value
+
+    const user =  document.querySelector("#user").value
+    
+    postGame(cityInput, stateInput, titleInput, genreInput, levelInput, compInput, user)
 }
 
+function postGame(cityInput, stateInput, titleInput, genreInput, levelInput, compInput, user) {
+    console.log(cityInput, stateInput, titleInput, genreInput, levelInput, compInput, user);
+}
