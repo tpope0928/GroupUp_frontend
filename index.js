@@ -34,9 +34,13 @@ function getGames() {
 
 function createFormHandler(e) {
     e.preventDefault()
+    const cityInput = document.querySelector("#input-city").value
+    const stateInput = document.querySelector("#input-state").value
+
     const titleInput =  document.querySelector("#input-title").value
     const genreInput = document.querySelector("#input-genre").value
     const levelInput = document.querySelector("#input-level").value
     const compInput = document.querySelector("#input-competitive").value
+    const userInput = document.querySelector("#input-username").value
 }
 
