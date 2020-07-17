@@ -34,17 +34,17 @@ function getGames() {
 
 function createFormHandler(e) {
     e.preventDefault()
-    const cityInput = document.querySelector("#input-city").value
-    const stateInput = document.querySelector("#input-state").value
+        const user =  document.querySelector("#user").value
 
-    const titleInput =  document.querySelector("#input-title").value
-    const genreInput = document.querySelector("#input-genre").value
-    const levelInput = document.querySelector("#input-level").value
-    const compInput = document.querySelector("#input-competitive").value
+        const cityInput = document.querySelector("#input-city").value
+        const stateInput = document.querySelector("#input-state").value
 
-    const user =  document.querySelector("#user").value
-    
-    postGame(cityInput, stateInput, titleInput, genreInput, levelInput, compInput, user)
+        const titleInput =  document.querySelector("#input-title").value
+        const genreInput = document.querySelector("#input-genre").value
+        const levelInput = document.querySelector("#input-level").value
+        const compInput = document.querySelector("#input-competitive").value
+
+        postGame(cityInput, stateInput, titleInput, genreInput, levelInput, compInput, user)
 }
 
 function postGame(cityInput, stateInput, titleInput, genreInput, levelInput, compInput, user) {
