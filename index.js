@@ -1,26 +1,28 @@
-const endPoint = "http://localhost:3000/api/v1/players"
+const endPoint = "http://localhost:3000/api/v1/games"
 
 document.addEventListener('DOMContentLoaded', () => {
-    getPlayers()
+    getGames()
 });
 
-function getPlayers() {
+function getGames() {
     fetch(endPoint)
-        .then(response => response.json())
-        .then(players => {
-            console.log(players);
-            players.data.forEach(player => {
-                const playerMarkup = `
-                    <div data-id=${player.id}>
-                    <h3>${player.attributes.username} - ${player.attributes.city}, ${player.attributes.state}</h3>
-                        <p>Game: ${player.attributes.games.title}</p>
-                        <p>Genre: ${player.attributes.games.genre}</p>
-                        <p>Game Level: ${player.attributes.games.level}</p>
-                        <p>Competitive: ${player.attributes.games.competitive}</p>
-                        <button data-id=${player.id}>Group Up!</button>
+        .then(res => res.json())
+        .then(games => {
+            // remember our JSON data is a bit nested due to our serializer
+            games.data.forEach(game => {
+                // double check how your data is nested in the console so you can successfully access the attributes of each individual object
+                const gameMarkup = `
+                    <div data-id=${game.id}>
+                        <h3>${game.attributes.username} - ${game.attributes.city}, ${game.attributes.state}</h3>
+                        <p>Game: ${game.attributes.title}</p>
+                        <p>Genre: ${game.attributes.genre}</p>
+                        <p>Game Level: ${game.attributes.level}</p>
+                        <p>Competitive: ${game.attributes.competitive}</p>
+                        <button data-id=${game.id}>Group Up!</button>
                     </div>
                     <br><br>`;
-                document.querySelector('#player-container').innerHTML += playerMarkup
+
+                document.querySelector('#game-container').innerHTML += gameMarkup
             })
         })
 }
