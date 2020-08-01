@@ -13,14 +13,14 @@ function getPlayers() {
                 // double check how your data is nested in the console so you can successfully access the attributes of each individual object
                 const playerMarkup = `
           <div data-id=${player.id}>
-<h3>${player.attributes.username} - ${player.attributes.city}, ${player.attributes.state}</h3>
-                        <p>Game: ${player.attributes.game.title}</p>
-                        <p>Genre: ${player.attributes.game.genre}</p>
-                        <p>Game Level: ${player.attributes.game.level}</p>
-                        <p>Competitive: ${player.attributes.game.competitive}</p>
-                        <button data-id=${player.id}>Group Up!</button>
-                    </div>
-                    <br><br>`;
+            <h3>${player.attributes.username} - ${player.attributes.city}, ${player.attributes.state}</h3>
+                <p>Game: ${player.attributes.game.title}</p>
+                <p>Genre: ${player.attributes.game.genre}</p>
+                <p>Game Level: ${player.attributes.game.level}</p>
+                <p>Competitive: ${player.attributes.game.competitive}</p>
+                 <button data-id=${player.id}>Group Up!</button>
+          </div>
+          <br><br>`;
 
                 document.querySelector('#game-container').innerHTML += playerMarkup
             })
