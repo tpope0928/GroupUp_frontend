@@ -2,6 +2,11 @@ const endPoint = "http://localhost:3000/api/v1/players"
 
 document.addEventListener('DOMContentLoaded', () => {
     getPlayers()
+
+    const createGameForm = document.querySelector("#create-game-form")
+
+    createGameForm.addEventListener("submit", (e) => createFormHandler(e))
+
 });
 
 function getPlayers() {
@@ -18,11 +23,27 @@ function getPlayers() {
                 <p>Genre: ${player.attributes.game.genre}</p>
                 <p>Game Level: ${player.attributes.game.level}</p>
                 <p>Competitive: ${player.attributes.game.competitive}</p>
-                 <button data-id=${player.id}>Group Up!</button>
+                <button data-id=${player.id}>Group Up!</button>
           </div>
           <br><br>`;
 
                 document.querySelector('#game-container').innerHTML += playerMarkup
             })
         })
+}
+
+function createFormHandler(e) {
+    e.preventDefault()
+    console.log(e)
+    const player =  document.querySelector("#player").value
+
+    const cityInput = document.querySelector("#input-city").value
+    const stateInput = document.querySelector("#input-state").value
+
+    const titleInput =  document.querySelector("#input-title").value
+    const genreInput = document.querySelector("#input-genre").value
+    const levelInput = document.querySelector("#input-level").value
+    const compInput = document.querySelector("#input-competitive").value
+
+    postFetch(cityInput, stateInput, titleInput, genreInput, levelInput, compInput, player)
 }
