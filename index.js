@@ -33,7 +33,7 @@ function getPlayers() {
 
 function createFormHandler(e) {
     e.preventDefault()
-    const player =  document.querySelector("#player").value
+    const playerInput =  document.querySelector("#player").value
     //const playerId = parseInt(document.querySelector('#player').value)
 
     const cityInput = document.querySelector("#input-city").value
@@ -44,9 +44,27 @@ function createFormHandler(e) {
     const levelInput = document.querySelector("#input-level").value
     const compInput = document.querySelector("#input-competitive").value
 
-    postFetch(player, cityInput, stateInput, titleInput, genreInput, levelInput, compInput)
+    postFetch(playerInput, cityInput, stateInput, titleInput, genreInput, levelInput, compInput)
 }
 
-function postFetch(player, city, state, title, genre, level, competitive) {
-    console.log(player, city, state, title, genre, level, competitive);
+function postFetch(username, city, state, title, genre, level, competitive) {
+    console.log(username, city, state, title, genre, level, competitive);
+
+    let bodyData = {username, city, state, title, genre, level, competitive}
+
+    fetch(endPoint, {
+        // POST request
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(bodyData)
+    })
+        .then(response => response.json())
+        .then(player => {
+            console.log(player);
+
+            //document.querySelector('#game-container').innerHTML += syllabusMarkup;
+        })
+
+
+
 }
