@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const createGameForm = document.querySelector("#create-game-form")
 
     createGameForm.addEventListener("submit", (e) => createFormHandler(e))
-
 });
 
 function getPlayers() {
@@ -34,9 +33,8 @@ function getPlayers() {
 
 function createFormHandler(e) {
     e.preventDefault()
-    console.log(e)
     const player =  document.querySelector("#player").value
-    const playerId = parseInt(document.querySelector('#player').value)
+    //const playerId = parseInt(document.querySelector('#player').value)
 
     const cityInput = document.querySelector("#input-city").value
     const stateInput = document.querySelector("#input-state").value
@@ -46,10 +44,9 @@ function createFormHandler(e) {
     const levelInput = document.querySelector("#input-level").value
     const compInput = document.querySelector("#input-competitive").value
 
-    postFetch(cityInput, stateInput, titleInput, genreInput, levelInput, compInput, player, playerId)
+    postFetch(player, cityInput, stateInput, titleInput, genreInput, levelInput, compInput)
 }
 
-function postFetch(cityInput, stateInput, titleInput, genreInput, levelInput, compInput, player, playerId) {
-
+function postFetch(player, city, state, title, genre, level, competitive) {
+    console.log(player, city, state, title, genre, level, competitive);
 }
-
