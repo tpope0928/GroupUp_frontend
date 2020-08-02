@@ -36,6 +36,7 @@ function createFormHandler(e) {
     e.preventDefault()
     console.log(e)
     const player =  document.querySelector("#player").value
+    const playerId = parseInt(document.querySelector('#player').value)
 
     const cityInput = document.querySelector("#input-city").value
     const stateInput = document.querySelector("#input-state").value
@@ -45,5 +46,10 @@ function createFormHandler(e) {
     const levelInput = document.querySelector("#input-level").value
     const compInput = document.querySelector("#input-competitive").value
 
-    postFetch(cityInput, stateInput, titleInput, genreInput, levelInput, compInput, player)
+    postFetch(cityInput, stateInput, titleInput, genreInput, levelInput, compInput, player, playerId)
 }
+
+function postFetch(cityInput, stateInput, titleInput, genreInput, levelInput, compInput, player, playerId) {
+
+}
+
