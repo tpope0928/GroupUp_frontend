@@ -47,10 +47,10 @@ function createFormHandler(e) {
     postFetch(playerInput, cityInput, stateInput, titleInput, genreInput, levelInput, compInput)
 }
 
-function postFetch(username, city, state, title, genre, level, competitive) {
-    console.log(username, city, state, title, genre, level, competitive);
+function postFetch(username, city, state, title, genre, level) {
+    console.log(username, city, state, title, genre, level);
 
-    let bodyData = {username, city, state, title, genre, level, competitive}
+    let bodyData = {username, city, state, title, genre}
 
     fetch(endPoint, {
         // POST request
