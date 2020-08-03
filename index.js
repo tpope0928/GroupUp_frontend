@@ -64,7 +64,4 @@ function postFetch(username, city, state, title, genre, level) {
 
             //document.querySelector('#game-container').innerHTML += syllabusMarkup;
         })
-
-
-
 }
