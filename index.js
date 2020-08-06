@@ -1,37 +1,36 @@
-const endPoint = "http://localhost:3000/api/v1/players"
+const PLAYERS_URL = "http://localhost:3000/api/v1/players"
+const GAMES_URL = "http://localhost:3000/api/v1/games"
 
 document.addEventListener('DOMContentLoaded', () => {
     getPlayers()
 
     const createGameForm = document.querySelector("#create-game-form")
 
-    createGameForm.addEventListener("submit", (e) => createFormHandler(e))
+    createGameForm.addEventListener("submit", (e) => createPlayerHandler(e))
 });
 
 function getPlayers() {
-    fetch(endPoint)
+    return fetch(PLAYERS_URL)
         .then(res => res.json())
         .then(players => {
-            // remember our JSON data is a bit nested due to our serializer
             players.data.forEach(player => {
-                // double check how your data is nested in the console so you can successfully access the attributes of each individual object
-                const playerMarkup = `
-          <div data-id=${player.id}>
-            <h3>${player.attributes.username} - ${player.attributes.city}, ${player.attributes.state}</h3>
-                <p>Game: ${player.attributes.game.title}</p>
-                <p>Genre: ${player.attributes.game.genre}</p>
-                <p>Game Level: ${player.attributes.game.level}</p>
-                <p>Competitive: ${player.attributes.game.competitive}</p>
-                <button data-id=${player.id}>Group Up!</button>
-          </div>
-          <br><br>`;
+                 const playerMarkup = `
+                    <div data-id=${player.id}>
+                    <h3>${player.attributes.username} - ${player.attributes.city}, ${player.attributes.state}</h3>
+                    <p>Game: ${player.attributes.game.title}</p>
+                    <p>Genre: ${player.attributes.game.genre}</p>
+                    <p>Game Level: ${player.attributes.game.level}</p>
+                    <p>Competitive: ${player.attributes.game.competitive}</p>
+                    <button data-id=${player.id}>Group Up!</button>
+                    </div>
+                    <br><br>`;
 
                 document.querySelector('#game-container').innerHTML += playerMarkup
             })
         })
 }
 
-function createFormHandler(e) {
+function createPlayerHandler(e) {
     e.preventDefault()
     const playerInput =  document.querySelector("#player").value
     //const playerId = parseInt(document.querySelector('#player').value)
@@ -39,20 +38,15 @@ function createFormHandler(e) {
     const cityInput = document.querySelector("#input-city").value
     const stateInput = document.querySelector("#input-state").value
 
-    const titleInput =  document.querySelector("#input-title").value
-    const genreInput = document.querySelector("#input-genre").value
-    const levelInput = document.querySelector("#input-level").value
-    const compInput = document.querySelector("#input-competitive").value
-
-    postFetch(playerInput, cityInput, stateInput, titleInput, genreInput, levelInput, compInput)
+    postPlayerFetch(playerInput, cityInput, stateInput)
 }
 
-function postFetch(username, city, state, title, genre, level) {
-    console.log(username, city, state, title, genre, level);
+function postPlayerFetch(playerInput, cityInput, stateInput) {
+    console.log(playerInput, cityInput, stateInput);
 
-    let bodyData = {username, city, state, title, genre}
+    let bodyData = {playerInput, cityInput, stateInput}
 
-    fetch(endPoint, {
+    fetch(PLAYERS_URL, {
         // POST request
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -61,6 +55,36 @@ function postFetch(username, city, state, title, genre, level) {
         .then(response => response.json())
         .then(player => {
             console.log(player);
+
+            //document.querySelector('#game-container').innerHTML += syllabusMarkup;
+        })
+}
+
+function createGameHandler(e) {
+    e.preventDefault()
+
+    const titleInput =  document.querySelector("#input-title").value
+    const genreInput = document.querySelector("#input-genre").value
+    const levelInput = document.querySelector("#input-level").value
+    const compInput = document.querySelector("#input-competitive").value
+
+    postGameFetch(titleInput, genreInput, levelInput, compInput)
+}
+
+function postGameFetch(titleInput, genreInput, levelInput, compInput) {
+    console.log(titleInput, genreInput, levelInput, compInput);
+
+    let bodyData = {titleInput, genreInput, levelInput, compInput}
+
+    fetch(PLAYERS_URL, {
+        // POST request
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(bodyData)
+    })
+        .then(response => response.json())
+        .then(game => {
+            console.log(game);
 
             //document.querySelector('#game-container').innerHTML += syllabusMarkup;
         })
