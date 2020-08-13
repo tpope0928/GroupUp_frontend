@@ -62,6 +62,6 @@ function postFetch(username, city, state, title, genre, level) {
         .then(player => {
             console.log(player);
 
-            //document.querySelector('#game-container').innerHTML += syllabusMarkup;
+            //document.querySelector('#game-container').innerHTML += playerMarkup;
         })
 }
