@@ -50,7 +50,7 @@ function createFormHandler(e) {
 function postFetch(username, city, state, title, genre, level) {
     console.log(username, city, state, title, genre, level);
 
-    let bodyData = {username, city, state, title, genre, level}
+    const bodyData = {username, city, state, title, genre, level}
 
     fetch(endPoint, {
         // POST request
