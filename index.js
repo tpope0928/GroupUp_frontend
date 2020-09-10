@@ -1,7 +1,7 @@
 const endPoint = "http://localhost:3000/api/v1/players"
 
 document.addEventListener('DOMContentLoaded', () => {
-    getPlayers()
+    getPlayers();
 
     const createGameForm = document.querySelector("#create-game-form")
 
@@ -60,7 +60,7 @@ function postFetch(username, city, state, title, genre, level) {
     })
         .then(response => response.json())
         .then(player =>
-            console.log(bodyData)
+            console.log(player)
 
             //document.querySelector('#game-container').innerHTML += playerMarkup;
         )
